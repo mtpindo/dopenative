@@ -16,7 +16,7 @@ export function DNProvider(props = defaultProps) {
   const { theme, appearance, children } = props
   const colorScheme = useColorScheme()
   const overridenTheme = { ...DNDefaultTheme, ...theme }
-  const overridenApperance = { ...colorScheme, ...appearance }
+  const overridenApperance = (appearance && appearance !== "") ? appearance : colorScheme
   const context = {
     theme: overridenTheme,
     appearance: overridenApperance,
