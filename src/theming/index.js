@@ -9,15 +9,17 @@ export const DNContext = React.createContext()
 const defaultProps = {
   children: null,
   theme: {},
+  appearance: null,
 }
 
 export function DNProvider(props = defaultProps) {
-  const { theme, children } = props
+  const { theme, appearance, children } = props
   const colorScheme = useColorScheme()
   const overridenTheme = { ...DNDefaultTheme, ...theme }
+  const overridenApperance = { ...colorScheme, ...appearance }
   const context = {
     theme: overridenTheme,
-    appearance: colorScheme,
+    appearance: overridenApperance,
   }
   return <DNContext.Provider value={context}>{children}</DNContext.Provider>
 }
